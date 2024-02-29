@@ -20,8 +20,7 @@
             return choiceArray[randomChoice];
         }
         
-        function getPlayerChoice() {
-            let playerChoice = prompt("Rock, paper or scissors?");
+        function getPlayerChoice(playerChoice) {
             playerChoice = playerChoice.toLowerCase();
 
 
@@ -44,32 +43,62 @@
             return string
         }
 
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        let playerWins = 0;
-        let computerWins = 0;
+       
 
-        function playRound(computerChoice, playerChoice) {
+        function playRound() {
+            
+            const playerChoice = getPlayerChoice(prompt("Rock, paper or scissors?"))
+            const computerChoice = getComputerChoice();
+            
+            console.log("Computer chose: " + capitalizeFirst(computerChoice))
+            
+            // Game is tied
             if (computerChoice === playerChoice) {
                 console.log("It's a tie! " + capitalizeFirst(computerChoice) + " and " + playerChoice + " is equal.")
             }
 
+            // Player wins
             else if (computerChoice == "rock" && playerChoice == "paper" ||
              computerChoice == "paper" && playerChoice == "scissors" ||
              computerChoice == "scissors" && playerChoice == "rock") {
                 console.log("Player wins! " + capitalizeFirst(playerChoice) + " beats " + computerChoice + ".")
              }
+
+            // Computer wins
             else {
                 console.log("Computer wins! " + capitalizeFirst(computerChoice) + " beats " + playerChoice + ".")
             }
         }
 
-        function playGame() {
-            playRound(computerSelection, playerSelection);
+        function decideWinner(playerWins, computerWins) {
+            if (playerWins > computerWins) {
+                console.log("Player wins the game! Player: " + playerWins + " Computer: " + computerWins)
+            }
+            else if (playerWins < computerWins) {
+                console.log("Computer wins the game! Player: " + playerWins + " Computer: " + computerWins)
+            }
+            else {
+                console.log("The game is tied! Player: " + playerWins + " Computer: " + computerWins)
+            }
         }
-        console.log("Computer chose: " + capitalizeFirst(computerSelection))
+
+        function playGame() {
+            let roundCount = 1;
+            let playerWins = 0;
+            let computerWins = 0;
+
+            for(roundCount; roundCount <= 3; roundCount++) {
+                console.log("Round: " + roundCount)
+                playRound();
+
+                console.log(playRound)
+            }
+
+            decideWinner(playerWins, computerWins);
+        }
         
-        playGame()
+        
+        playGame();
 
         
         
