@@ -20,9 +20,10 @@
             return choiceArray[randomChoice];
         }
         
-        function getPlayerChoice(playerChoice) {
-            playerChoice = playerChoice.toLowerCase();
+        computerChoice = getComputerChoice()
 
+        function getPlayerChoice() {
+            playerChoice = prompt("Rock, paper or scissors?")
 
             if(playerChoice == "rock") {
                 return playerChoice;
@@ -45,10 +46,7 @@
 
        
 
-        function playRound() {
-            
-            const playerChoice = getPlayerChoice(prompt("Rock, paper or scissors?"))
-            const computerChoice = getComputerChoice();
+        function playRound(playerChoice, computerChoice) {
             
             console.log("Computer chose: " + capitalizeFirst(computerChoice))
             
@@ -62,11 +60,13 @@
              computerChoice == "paper" && playerChoice == "scissors" ||
              computerChoice == "scissors" && playerChoice == "rock") {
                 console.log("Player wins! " + capitalizeFirst(playerChoice) + " beats " + computerChoice + ".")
+                return "player"
              }
 
             // Computer wins
             else {
                 console.log("Computer wins! " + capitalizeFirst(computerChoice) + " beats " + playerChoice + ".")
+                return "computer"
             }
         }
 
@@ -89,9 +89,17 @@
 
             for(roundCount; roundCount <= 3; roundCount++) {
                 console.log("Round: " + roundCount)
-                playRound();
 
-                console.log(playRound)
+                const playerChoice = getPlayerChoice();
+
+                let winner = playRound(playerChoice, computerChoice);
+
+                if (winner == "player") {
+                    playerWins++;
+                }
+                else if (winner == "computer") {
+                    computerWins++;
+                }
             }
 
             decideWinner(playerWins, computerWins);
