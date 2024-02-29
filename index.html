@@ -20,56 +20,60 @@
             return choiceArray[randomChoice];
         }
         
-        function getPlayerChoice() {
-            let playerChoice = prompt("Rock, paper or scissors?");
-            playerChoice = playerChoice.toLowerCase();
+      
 
-
-            if(playerChoice == "rock") {
-                return playerChoice;
-            }
-            else if(playerChoice == "paper") {
-                return playerChoice;
-            }
-            else if(playerChoice == "scissors") {
-                return playerChoice;
-            }
+        function capitalizeFirst(string) {
+            string = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+            return string
         }
 
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        let playerWins = 0;
-        let computerWins = 0;
 
         function playRound(computerChoice, playerChoice) {
             if (computerChoice === playerChoice) {
-                console.log("It's a tie! " + computerChoice + " and " + playerChoice + " is equal.")
+                console.log("It's a tie! " + capitalizeFirst(computerChoice) + " and " + playerChoice + " is equal.")
             }
 
-            else if (computerChoice === "rock" && playerChoice === "paper") {
-                console.log("Player wins! Paper beats rock. ") 
+            else if (computerChoice == "rock" && playerChoice == "paper" ||
+             computerChoice == "paper" && playerChoice == "scissors" ||
+             computerChoice == "scissors" && playerChoice == "rock") {
+                console.log("Player wins! " + capitalizeFirst(playerChoice) + " beats " + computerChoice + ".")
+             }
+            else {
+                console.log("Computer wins! " + capitalizeFirst(computerChoice) + " beats " + playerChoice + ".")
+            }
+        }
+
+        function playGame() {
+
+            function getPlayerChoice() {
+                let playerChoice = prompt("Rock, paper or scissors?");
+                playerChoice = playerChoice.toLowerCase();
+
+
+                if(playerChoice == "rock") {
+                return playerChoice;
+                }
+                else if(playerChoice == "paper") {
+                return playerChoice;
+                }
+                else if(playerChoice == "scissors") {
+                return playerChoice;
+                }
+                else {
+                console.log ("Invalid input!")
+                }
             }
 
-            else if (computerChoice === "paper" && playerChoice === "rock") {
-                console.log("Computer wins! Paper beats rock.")
-            }
+            const playerSelection = getPlayerChoice();
+            const computerSelection = getComputerChoice();
 
-            else if (computerChoice === "rock" && playerChoice === "scissors") {
-                console.log("Computer wins! Rock beats scissors.")
-            }
-
-            else if (computerChoice === "scissors" && playerChoice === "rock") {
-                console.log("Player wins! Rock beats scissors.")
-            }
-
-            else if (computerChoice === "paper" && playerChoice === "scissors") {
-                console.log("Player wins! Scissors beats paper.")
-            }
             
 
+            playRound(computerSelection, playerSelection);
         }
-        console.log("Computer chose: " + computerSelection)
-        playRound(computerSelection, playerSelection);
+        console.log("Computer chose: " + capitalizeFirst(computerSelection))
+        
+        playGame()
 
         
         
