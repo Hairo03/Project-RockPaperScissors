@@ -20,13 +20,34 @@
             return choiceArray[randomChoice];
         }
         
-      
+        function getPlayerChoice() {
+            let playerChoice = prompt("Rock, paper or scissors?");
+            playerChoice = playerChoice.toLowerCase();
+
+
+            if(playerChoice == "rock") {
+                return playerChoice;
+            }
+            else if(playerChoice == "paper") {
+                return playerChoice;
+            }
+            else if(playerChoice == "scissors") {
+                return playerChoice;
+            }
+            else {
+                console.log ("Invalid input!")
+            }
+        }
 
         function capitalizeFirst(string) {
             string = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
             return string
         }
 
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+        let playerWins = 0;
+        let computerWins = 0;
 
         function playRound(computerChoice, playerChoice) {
             if (computerChoice === playerChoice) {
@@ -44,31 +65,6 @@
         }
 
         function playGame() {
-
-            function getPlayerChoice() {
-                let playerChoice = prompt("Rock, paper or scissors?");
-                playerChoice = playerChoice.toLowerCase();
-
-
-                if(playerChoice == "rock") {
-                return playerChoice;
-                }
-                else if(playerChoice == "paper") {
-                return playerChoice;
-                }
-                else if(playerChoice == "scissors") {
-                return playerChoice;
-                }
-                else {
-                console.log ("Invalid input!")
-                }
-            }
-
-            const playerSelection = getPlayerChoice();
-            const computerSelection = getComputerChoice();
-
-            
-
             playRound(computerSelection, playerSelection);
         }
         console.log("Computer chose: " + capitalizeFirst(computerSelection))
