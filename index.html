@@ -1,115 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <script>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div>
+        <p id="compchoice"> </p>
+        <p id="para"> </p>
+        <h1 id="playerwins">Player: </h1>
+        <h1 id="computerwins">Computer: </h1>
+    </div>
 
-        function getComputerChoice() {
-            let choiceArray = [
-                "rock",
-                "paper",
-                "scissors"
-            ]
-            
-            let randomChoice = Math.floor(Math.random() * choiceArray.length);
-
-            return choiceArray[randomChoice];
-        }
-        
-        computerChoice = getComputerChoice()
-
-        function getPlayerChoice() {
-            playerChoice = prompt("Rock, paper or scissors?")
-
-            if(playerChoice == "rock") {
-                return playerChoice;
-            }
-            else if(playerChoice == "paper") {
-                return playerChoice;
-            }
-            else if(playerChoice == "scissors") {
-                return playerChoice;
-            }
-            else {
-                console.log ("Invalid input!")
-            }
-        }
-
-        function capitalizeFirst(string) {
-            string = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-            return string
-        }
-
-       
-
-        function playRound(playerChoice, computerChoice) {
-            
-            console.log("Computer chose: " + capitalizeFirst(computerChoice))
-            
-            // Game is tied
-            if (computerChoice === playerChoice) {
-                console.log("It's a tie! " + capitalizeFirst(computerChoice) + " and " + playerChoice + " is equal.")
-            }
-
-            // Player wins
-            else if (computerChoice == "rock" && playerChoice == "paper" ||
-             computerChoice == "paper" && playerChoice == "scissors" ||
-             computerChoice == "scissors" && playerChoice == "rock") {
-                console.log("Player wins! " + capitalizeFirst(playerChoice) + " beats " + computerChoice + ".")
-                return "player"
-             }
-
-            // Computer wins
-            else {
-                console.log("Computer wins! " + capitalizeFirst(computerChoice) + " beats " + playerChoice + ".")
-                return "computer"
-            }
-        }
-
-        function decideWinner(playerWins, computerWins) {
-            if (playerWins > computerWins) {
-                console.log("Player wins the game! Player: " + playerWins + " Computer: " + computerWins)
-            }
-            else if (playerWins < computerWins) {
-                console.log("Computer wins the game! Player: " + playerWins + " Computer: " + computerWins)
-            }
-            else {
-                console.log("The game is tied! Player: " + playerWins + " Computer: " + computerWins)
-            }
-        }
-
-        function playGame() {
-            let roundCount = 1;
-            let playerWins = 0;
-            let computerWins = 0;
-
-            for(roundCount; roundCount <= 3; roundCount++) {
-                console.log("Round: " + roundCount)
-
-                const playerChoice = getPlayerChoice();
-
-                let winner = playRound(playerChoice, computerChoice);
-
-                if (winner == "player") {
-                    playerWins++;
-                }
-                else if (winner == "computer") {
-                    computerWins++;
-                }
-            }
-
-            decideWinner(playerWins, computerWins);
-        }
-        
-        
-        playGame();
-
-        
-        
-    </script>
+    <script src="./script.js" defer></script>
 </body>
+
 </html>
